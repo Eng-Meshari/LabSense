@@ -23,7 +23,6 @@
 *.dll
 *.so.*
 
-
 # Fortran module files
 *.mod
 *.smod
@@ -61,10 +60,10 @@ compile_commands.json
 # vcpkg
 vcpkg_installed/
 
-# debug information files
+# Debug information files
 *.dwo
 
-# test output & cache
+# Test output & cache
 Testing/
 .cache/
 
@@ -75,10 +74,18 @@ arduino_secrets.h
 .env.*
 !.env.example
 
-# Firmware build output
+# Firmware build output & ESP32 binaries
 /build/
+*.bin
 *.elf
 *.hex
+
+# Claude CLI artifacts
+.claude/
+
+# IDE settings & caches
+.arduino/
+.vscode/
 
 # Operating system files
 .DS_Store
