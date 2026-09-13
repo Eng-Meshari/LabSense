@@ -50,4 +50,18 @@
 // Time before changing display pages
 #define DISPLAY_PAGE_TIME   3000
 
+// ==========================================
+// Network & NTP Time
+// ==========================================
+
+#define NTP_SERVER_1            "pool.ntp.org"
+#define NTP_SERVER_2            "time.nist.gov"
+
+// KSA is UTC+3 year round -- no DST
+#define GMT_OFFSET_SEC          (3 * 3600)
+#define DAYLIGHT_OFFSET_SEC     0
+
+// Wait between Wi-Fi reconnect attempts
+#define WIFI_RECONNECT_INTERVAL 10000
+
 #endif // CONFIG_H
