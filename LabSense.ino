@@ -11,6 +11,7 @@ DHT dht(PIN_DHT_DATA, DHTTYPE);
 static uint32_t lastRead = 0;
 static uint32_t beepUntil = 0;
 static bool oledOK = false;
+static bool motionLatch = false;
 
 static void i2cScan() {
   Serial.println("I2C scan:");
@@ -63,13 +64,18 @@ void loop() {
     beepUntil = 0;
   }
 
+  // HC-SR501 pulses can start and end between two 2s samples -> latch every pass
+  if (digitalRead(PIN_PIR_MOTION)) motionLatch = true;
+
   if (now - lastRead < DHT_READ_INTERVAL) return;  // DHT22 floor: 2s, doubles as the white-flash hold
   lastRead = now;
 
   float t = dht.readTemperature();
   float h = dht.readHumidity();
   int gas = analogRead(PIN_MQ136_ANALOG);   // raw 0-4095; MQ-136 needs ~24h burn-in before it means anything
-  bool motion = digitalRead(PIN_PIR_MOTION);
+  bool pirNow  = digitalRead(PIN_PIR_MOTION);
+  bool motion  = motionLatch || pirNow;
+  motionLatch = false;
   bool dhtOK = !isnan(t) && !isnan(h);
 
   char l1[24], l2[24], l3[24];
