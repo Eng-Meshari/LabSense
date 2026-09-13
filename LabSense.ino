@@ -12,6 +12,16 @@ static uint32_t lastRead = 0;
 static uint32_t beepUntil = 0;
 static bool oledOK = false;
 
+static void i2cScan() {
+  Serial.println("I2C scan:");
+  bool any = false;
+  for (uint8_t a = 1; a < 127; a++) {
+    Wire.beginTransmission(a);
+    if (Wire.endTransmission() == 0) { Serial.printf("  found 0x%02X\n", a); any = true; }
+  }
+  if (!any) Serial.println("  NOTHING on the bus -> SDA/SCL/VCC/GND wiring");
+}
+
 static void beep(uint16_t ms) {
   digitalWrite(PIN_BUZZER, HIGH);
   beepUntil = millis() + ms;
@@ -24,17 +34,20 @@ void setup() {
   digitalWrite(PIN_BUZZER, LOW);
 
   Wire.begin(PIN_OLED_SDA, PIN_OLED_SCL);
+  i2cScan();
+
   oledOK = display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS);
-  if (!oledOK) {
-    Serial.println("OLED NOT FOUND -> check SDA=21 / SCL=22 / 3.3V / addr 0x3C");
-  } else {
+  if (!oledOK) oledOK = display.begin(SSD1306_SWITCHCAPVCC, 0x3D);  // some modules ship on 0x3D
+  Serial.println(oledOK ? "OLED init OK" : "OLED NOT FOUND -> SDA=21 SCL=22 3.3V, addr 0x3C/0x3D");
+
+  if (oledOK) {
+    // every pixel on: if the screen does not go fully white here, the panel is not
+    // receiving data (loose wire) or it is an SH1106 controller, not SSD1306
     display.clearDisplay();
+    display.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, SSD1306_WHITE);
+    display.display();
     display.setTextSize(1);
     display.setTextColor(SSD1306_WHITE);
-    display.setCursor(0, 0);
-    display.println("LabSense");
-    display.println("wiring test...");
-    display.display();
   }
 
   dht.begin();
@@ -50,7 +63,7 @@ void loop() {
     beepUntil = 0;
   }
 
-  if (now - lastRead < DHT_READ_INTERVAL) return;  // DHT22 floor: 2s
+  if (now - lastRead < DHT_READ_INTERVAL) return;  // DHT22 floor: 2s, doubles as the white-flash hold
   lastRead = now;
 
   float t = dht.readTemperature();
