@@ -50,6 +50,9 @@
 // Time before changing display pages
 #define DISPLAY_PAGE_TIME   3000
 
+// OLED redraw throttle (I2C writes are not free)
+#define DISPLAY_REFRESH_INTERVAL 200
+
 // ==========================================
 // Network & NTP Time
 // ==========================================
