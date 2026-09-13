@@ -53,6 +53,9 @@
 // OLED redraw throttle (I2C writes are not free)
 #define DISPLAY_REFRESH_INTERVAL 200
 
+// Gas alarm: buzzer ON for this long, then OFF for this long
+#define BUZZER_PULSE_INTERVAL    200
+
 // ==========================================
 // Network & NTP Time
 // ==========================================
