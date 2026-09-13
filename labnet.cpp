@@ -1,8 +1,12 @@
+#include <Arduino.h>
+#if __has_include(<Network.h>)
+#include <Network.h>   // Core 3.x: WiFi.h needs NetworkInterface/network_event_handle_t first
+#endif
 #include <WiFi.h>
 #include <time.h>
 #include "config.h"
 #include "secrets.h"
-#include "network.h"
+#include "labnet.h"
 
 static uint32_t lastWifiCheck = 0;
 

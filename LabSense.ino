@@ -1,7 +1,7 @@
 // LabSense -- orchestrator only. All logic lives in sensors/network/display.
 #include "config.h"
 #include "sensors.h"
-#include "network.h"
+#include "labnet.h"
 #include "display.h"
 
 static SensorData data;

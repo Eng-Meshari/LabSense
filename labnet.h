@@ -1,5 +1,5 @@
-#ifndef NETWORK_H
-#define NETWORK_H
+#ifndef LABNET_H
+#define LABNET_H
 
 #include <Arduino.h>
 
@@ -12,4 +12,4 @@ bool isTimeSynced();
 void getFormattedTime(char *buffer, size_t maxLen);  // "HH:MM:SS", "--:--:--" until synced
 void getFormattedDate(char *buffer, size_t maxLen);  // "YYYY-MM-DD", "----/--/--" until synced
 
-#endif // NETWORK_H
+#endif // LABNET_H

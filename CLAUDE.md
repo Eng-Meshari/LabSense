@@ -25,5 +25,5 @@ Interactive lab environment monitor featuring temperature/humidity tracking (DHT
 - `ArduinoJson` (v6 or v7)
 
 ## Coding Standards
-- Implement modular logic in `sensors.cpp`, `network.cpp`, and keep `main.ino` minimal.
+- Implement modular logic in `sensors.cpp`, `labnet.cpp` (named to avoid colliding with the ESP32 core's `Network.h`), and keep `main.ino` minimal.
 - Never hardcode credentials; read from `secrets.h`.
