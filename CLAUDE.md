@@ -15,8 +15,8 @@ Interactive lab environment monitor featuring temperature/humidity tracking (DHT
 - OLED SCL: GPIO 22
 - DHT22 Data: GPIO 4
 - MQ-136 AOUT: GPIO 34 (ADC1_CH6)
-- HC-SR501 OUT: GPIO 14
-- Active Buzzer: GPIO 18
+- HC-SR501 OUT: GPIO 27
+- Active Buzzer: GPIO 26
 
 ## Required Libraries
 - `Adafruit_SSD1306` & `Adafruit_GFX` (for OLED)
