@@ -3,11 +3,6 @@
 
 #include <Arduino.h>
 
-// ==========================================
-// Pin Definitions
-// ==========================================
-
-// I2C OLED (0.96 inch SSD1306)
 #define PIN_OLED_SDA        21
 #define PIN_OLED_SCL        22
 #define SCREEN_WIDTH        128
@@ -15,46 +10,32 @@
 #define OLED_RESET          -1
 #define SCREEN_ADDRESS      0x3C
 
-// DHT22 (Temp & Humidity)
 #define PIN_DHT_DATA        4
 #define DHTTYPE             DHT22
 
-// MQ-136 Gas Sensor
-// IMPORTANT:
-// AO from MQ-136 should go to GPIO34 through a voltage divider
-#define PIN_MQ136_ANALOG    34
+// MQ-136 removed from project
 
-// Temporary starting value.
-// Must be calibrated using real sensor readings.
-#define GAS_ALERT_THRESHOLD 1800
-
-// PIR Motion Sensor (HC-SR501)
 #define PIN_PIR_MOTION      27
 
-// Active Buzzer Module
-// S -> GPIO26
 #define PIN_BUZZER          26
-
-// ==========================================
-// Timing & Operational Constraints
-// ==========================================
 
 #define SERIAL_BAUD_RATE    115200
 
-// DHT22 should not be read too frequently
 #define DHT_READ_INTERVAL   2000
-
-// Gas + PIR polling interval
 #define SENSOR_POLL_RATE    500
-
-// Time before changing display pages
 #define DISPLAY_PAGE_TIME   3000
-
-// OLED redraw throttle (I2C writes are not free)
 #define DISPLAY_REFRESH_INTERVAL 200
 
-// Gas alarm: buzzer ON for this long, then OFF for this long
-#define BUZZER_PULSE_INTERVAL    200
+// Temperature alarm threshold
+#define TEMP_ALERT_THRESHOLD 30.0
+
+// Motion buzzer duration
+#define MOTION_BEEP_DURATION 120
+
+// Temperature alarm beep pattern
+#define TEMP_BEEP_ON_TIME    300
+#define TEMP_BEEP_OFF_TIME   1000
+
 
 // ==========================================
 // Network & NTP Time
@@ -63,11 +44,11 @@
 #define NTP_SERVER_1            "pool.ntp.org"
 #define NTP_SERVER_2            "time.nist.gov"
 
-// KSA is UTC+3 year round -- no DST
 #define GMT_OFFSET_SEC          (3 * 3600)
 #define DAYLIGHT_OFFSET_SEC     0
 
-// Wait between Wi-Fi reconnect attempts
 #define WIFI_RECONNECT_INTERVAL 10000
 
-#endif // CONFIG_H
+#endif
+
+

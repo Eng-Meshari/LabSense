@@ -49,9 +49,9 @@ bool isTimeSynced() {
 }
 
 void getFormattedTime(char *buffer, size_t maxLen) {
-  formatNow(buffer, maxLen, "%H:%M:%S", "--:--:--");
+  formatNow(buffer, maxLen, "%I:%M:%S %p", "--:--:-- --");
 }
 
 void getFormattedDate(char *buffer, size_t maxLen) {
-  formatNow(buffer, maxLen, "%Y-%m-%d", "----/--/--");
+  formatNow(buffer, maxLen, "%d/%m/%Y", "--/--/----");
 }
