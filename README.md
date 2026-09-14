@@ -21,6 +21,8 @@ The entire runtime is **strictly non-blocking**: there is not a single `delay()`
 9. [Roadmap](#9-roadmap)
 10. [License](#10-license)
 
+> **Hardware deep dive:** [`docs/HARDWARE.md`](docs/HARDWARE.md) — full net list, text schematics, Mermaid wiring graphs, a runnable Wokwi simulation, and the electrical engineering notes (voltage domains, decoupling, I²C bus limits).
+
 ---
 
 ## 1. Project Overview
@@ -57,6 +59,8 @@ LabSense is an open-source environmental awareness node designed for makers, lab
 ---
 
 ## 3. Wiring & Pinout
+
+> This section is the quick reference. For the complete electrical documentation — net list, ASCII schematics, power-bus distribution and current budget, Mermaid diagrams, a ready-to-run Wokwi `diagram.json`, and the engineering rationale — see **[`docs/HARDWARE.md`](docs/HARDWARE.md)**.
 
 ### 3.1 Connection Table
 
