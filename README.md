@@ -338,7 +338,7 @@ The OLED lights immediately. Temperature and humidity populate within ~2 seconds
 | Priority | Screen | Trigger Condition | Contents |
 | :--: | :--- | :--- | :--- |
 | **1 (highest)** | **Thermal Warning** | `temperature >= 30.0 °C` **and** the DHT reading is valid | `WARNING!` (2x text), `High Temp`, and the live `Temp: xx.x C` value |
-| **2** | **Welcome / Motion** | Within **3 seconds** of a PIR rising edge | `Welcome` / `to` / `Rimalx Lab`, centred, 2x text |
+| **2** | **Welcome / Motion** | Within **3 seconds** of a PIR rising edge | 16x16 waving-hand icon beside `Welcome`, then `to` / `Rimalx Lab`, centred, 2x text |
 | **3 (default)** | **Dashboard** | Everything else | `RimalSense` header, `Temp: xx.x C`, `Hum : xx%`, date `DD/MM/YYYY`, clock `hh:mm:ss AM/PM` |
 
 Because the thermal warning sits above the welcome card, an over-temperature condition cannot be masked by someone walking past the sensor — the alarm screen stays up until the temperature falls back below threshold.
