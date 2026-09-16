@@ -14,6 +14,32 @@ static uint32_t motionStartTime = 0;
 static bool lastMotionState = false;
 
 
+// Small icons for temperature and humidity
+static const unsigned char PROGMEM tempIcon[] = {
+  0x18,
+  0x18,
+  0x18,
+  0x18,
+  0x18,
+  0x3C,
+  0x3C,
+  0x18
+};
+
+
+static const unsigned char PROGMEM humIcon[] = {
+  0x10,
+  0x38,
+  0x7C,
+  0x7C,
+  0x38,
+  0x10,
+  0x00,
+  0x00
+};
+
+
+
 static void drawCentered(const char *text, int16_t y, uint8_t size) {
 
   display.setTextSize(size);
@@ -24,6 +50,7 @@ static void drawCentered(const char *text, int16_t y, uint8_t size) {
 
   display.print(text);
 }
+
 
 
 void initDisplay() {
@@ -125,8 +152,10 @@ void updateDisplay(const SensorData &data) {
     display.setTextSize(1);
 
 
+    // Temperature
+    display.drawBitmap(0,18,tempIcon,8,8,SSD1306_WHITE);
 
-    display.setCursor(0,18);
+    display.setCursor(11,18);
 
     if(data.dhtValid)
 
@@ -139,7 +168,10 @@ void updateDisplay(const SensorData &data) {
 
 
 
-    display.setCursor(0,32);
+    // Humidity
+    display.drawBitmap(0,32,humIcon,8,8,SSD1306_WHITE);
+
+    display.setCursor(11,32);
 
     if(data.dhtValid)
 
