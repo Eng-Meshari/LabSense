@@ -40,23 +40,6 @@ static const unsigned char PROGMEM humIcon[] = {
 };
 
 
-// Warning icon
-static const unsigned char PROGMEM warningIcon[] = {
-  0x10,
-  0x38,
-  0x38,
-  0x54,
-  0x54,
-  0x7C,
-  0x7C,
-  0xFE,
-  0xFE,
-  0x10,
-  0x10,
-  0x00
-};
-
-
 
 static void drawCentered(const char *text, int16_t y, uint8_t size) {
 
@@ -111,15 +94,11 @@ void updateDisplay(const SensorData &data) {
 
 
 
-  // Temperature warning has highest priority
+  // Temperature warning screen
   if (data.temperatureAlert) {
 
 
-    display.drawBitmap(5, 2, warningIcon, 12, 12, SSD1306_WHITE);
-
-    display.setTextSize(2);
-    display.setCursor(22, 0);
-    display.print("WARNING!");
+    drawCentered("WARNING!", 0, 2);
 
 
     drawCentered("High Temp", 28, 1);
@@ -173,6 +152,7 @@ void updateDisplay(const SensorData &data) {
 
 
     display.setTextSize(1);
+
 
 
     // Temperature
