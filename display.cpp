@@ -70,19 +70,19 @@ void updateDisplay(const SensorData &data) {
   if (data.temperatureAlert) {
 
 
-    drawCentered("WARNING!", 5, 2);
+    drawCentered("WARNING!", 0, 2);
 
-    drawCentered("High Temp", 40, 1);
+    drawCentered("High Temp", 28, 1);
 
 
     char temp[20];
 
     snprintf(temp, sizeof(temp),
-             "Temp: %.1f C",
+             "%.1f C",
              data.temperature);
 
 
-    drawCentered(temp, 45, 1);
+    drawCentered(temp, 45, 2);
 
   }
 
@@ -94,7 +94,9 @@ void updateDisplay(const SensorData &data) {
 
 
     drawCentered("Welcome", 5, 2);
+
     drawCentered("to", 25, 2);
+
     drawCentered("Rimalx Lab", 45, 2);
 
   }
@@ -115,10 +117,13 @@ void updateDisplay(const SensorData &data) {
     getFormattedDate(dateBuffer, sizeof(dateBuffer));
 
 
+
     drawCentered("RimalSense", 0, 1);
 
 
+
     display.setTextSize(1);
+
 
 
     display.setCursor(0,18);
@@ -133,6 +138,7 @@ void updateDisplay(const SensorData &data) {
       display.print("Temp: --");
 
 
+
     display.setCursor(0,32);
 
     if(data.dhtValid)
@@ -145,10 +151,15 @@ void updateDisplay(const SensorData &data) {
       display.print("Hum : --");
 
 
+
     display.setCursor(0,45);
+
     display.print(dateBuffer);
 
+
+
     display.setCursor(0,57);
+
     display.print(timeBuffer);
 
   }
