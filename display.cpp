@@ -14,7 +14,7 @@ static uint32_t motionStartTime = 0;
 static bool lastMotionState = false;
 
 
-// Small icons for temperature and humidity
+// Temperature icon
 static const unsigned char PROGMEM tempIcon[] = {
   0x18,
   0x18,
@@ -27,6 +27,7 @@ static const unsigned char PROGMEM tempIcon[] = {
 };
 
 
+// Humidity icon
 static const unsigned char PROGMEM humIcon[] = {
   0x10,
   0x38,
@@ -35,6 +36,23 @@ static const unsigned char PROGMEM humIcon[] = {
   0x38,
   0x10,
   0x00,
+  0x00
+};
+
+
+// Warning icon
+static const unsigned char PROGMEM warningIcon[] = {
+  0x10,
+  0x38,
+  0x38,
+  0x54,
+  0x54,
+  0x7C,
+  0x7C,
+  0xFE,
+  0xFE,
+  0x10,
+  0x10,
   0x00
 };
 
@@ -97,7 +115,12 @@ void updateDisplay(const SensorData &data) {
   if (data.temperatureAlert) {
 
 
-    drawCentered("WARNING!", 0, 2);
+    display.drawBitmap(5, 2, warningIcon, 12, 12, SSD1306_WHITE);
+
+    display.setTextSize(2);
+    display.setCursor(22, 0);
+    display.print("WARNING!");
+
 
     drawCentered("High Temp", 28, 1);
 
