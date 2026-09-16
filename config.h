@@ -27,7 +27,7 @@
 #define DISPLAY_REFRESH_INTERVAL 200
 
 // Temperature alarm threshold
-#define TEMP_ALERT_THRESHOLD 30.0
+#define TEMP_ALERT_THRESHOLD 40.0
 
 // Motion buzzer duration
 #define MOTION_BEEP_DURATION 120

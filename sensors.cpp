@@ -20,7 +20,7 @@ static uint32_t motionBeepStart = 0;
 void initSensors() {
   pinMode(PIN_PIR_MOTION, INPUT);
   pinMode(PIN_BUZZER, OUTPUT);
-  digitalWrite(PIN_BUZZER, LOW);
+  digitalWrite(PIN_BUZZER, HIGH);
   dht.begin();
 }
 

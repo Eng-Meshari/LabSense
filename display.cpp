@@ -72,7 +72,7 @@ void updateDisplay(const SensorData &data) {
 
     drawCentered("WARNING!", 5, 2);
 
-    drawCentered("High Temp", 30, 1);
+    drawCentered("High Temp", 40, 1);
 
 
     char temp[20];
