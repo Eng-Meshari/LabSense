@@ -81,7 +81,7 @@ static void drawCentered(const char *text, int16_t y, uint8_t size) {
 
 
 
-// Motion screen: wave icon + headline centred as one group
+// Motion screen: headline + wave icon centred as one group
 static void drawGreeting() {
 
   const char *headline = "Welcome";
@@ -98,18 +98,19 @@ static void drawGreeting() {
 
   int16_t textH = 7 * size;
 
-  int16_t x = (SCREEN_WIDTH - (iconSize + gap + textW)) / 2;
+  int16_t x = (SCREEN_WIDTH - (textW + gap + iconSize)) / 2;
 
-
-  // Centre the icon vertically on the glyph height
-  display.drawBitmap(x, y + (textH - iconSize) / 2, waveIcon,
-                     iconSize, iconSize, SSD1306_WHITE);
 
   display.setTextSize(size);
 
-  display.setCursor(x + iconSize + gap, y);
+  display.setCursor(x, y);
 
   display.print(headline);
+
+
+  // Centre the icon vertically on the glyph height
+  display.drawBitmap(x + textW + gap, y + (textH - iconSize) / 2, waveIcon,
+                     iconSize, iconSize, SSD1306_WHITE);
 
 
   drawCentered("to", 25, 2);
