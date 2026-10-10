@@ -1,7 +1,7 @@
 # Lab Environment Monitor (ESP32 IoT)
 
 ## Project Overview
-Interactive lab environment monitor featuring temperature/humidity tracking (DHT22), H2S toxic gas monitoring (MQ-136), physical presence detection (HC-SR501), an OLED status dashboard (SSD1306), and an audible alert system (Active Buzzer).
+Interactive lab environment monitor featuring temperature/humidity tracking (DHT22), H2S toxic gas monitoring (MQ-136), physical presence detection (HC-SR501), an OLED status dashboard (SSD1306), and an audible alert system (Active Buzzer). 
 
 ## Hardware & Architecture Specs
 - **Target:** ESP32 DevKit V1 (ESP-WROOM-32)
